@@ -1,7 +1,6 @@
 // Implementate singleton design pattern elegantly in go with
 // the help of sync.Once
-
-package designpattern
+package elegantsingleton
 
 import "sync"
 

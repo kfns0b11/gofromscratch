@@ -1,8 +1,7 @@
 // singleton lazy instantiation, means that global singleton
 // instance is created when it first used. It is non-concurrently
 // secure and requires lock in practice
-
-package designpattern
+package lazysingleton
 
 import "sync"
 
