@@ -3,6 +3,9 @@ module github.com/kfngp/gofromscratch
 go 1.16
 
 require (
+	github.com/appleboy/gin-jwt v2.5.0+incompatible // indirect
+	github.com/appleboy/gin-jwt/v2 v2.7.0 // indirect
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-playground/validator/v10 v10.9.0 // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
@@ -19,5 +22,6 @@ require (
 	google.golang.org/genproto v0.0.0-20211021150943-2b146023228c // indirect
 	google.golang.org/grpc v1.41.0
 	google.golang.org/protobuf v1.27.1
+	gopkg.in/dgrijalva/jwt-go.v3 v3.2.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
