@@ -14,6 +14,7 @@ require (
 	github.com/marmotedu/sample-code v0.0.0-20210704230644-5b45bd94e698
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/ugorji/go v1.2.6 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
 	golang.org/x/net v0.0.0-20211020060615-d418f374d309 // indirect
@@ -24,4 +25,6 @@ require (
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/dgrijalva/jwt-go.v3 v3.2.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	gorm.io/driver/mysql v1.1.3 // indirect
+	gorm.io/gorm v1.22.2 // indirect
 )
