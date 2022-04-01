@@ -13,6 +13,22 @@ type Data struct {
 	Line string
 }
 
+// Puller declares behavior for pulling data.
+type Puller interface {
+	Pull(d *Data) error
+}
+
+// Storer declares behavior for storing data.
+type Storer interface {
+	Store(d *Data) error
+}
+
+// PullStorer is a convenience type that embeds the Puller and Storer
+type PullStorer interface {
+	Puller
+	Storer
+}
+
 // Xenia is a system we need to pull data from.
 type Xenia struct {
 	Host    string
@@ -54,9 +70,9 @@ type System struct {
 // =============================================================================
 
 // pull knows how to pull bulks of data from Xenia.
-func pull(x *Xenia, data []Data) (int, error) {
+func pull(p Puller, data []Data) (int, error) {
 	for i := range data {
-		if err := x.Pull(&data[i]); err != nil {
+		if err := p.Pull(&data[i]); err != nil {
 			return i, err
 		}
 	}
@@ -65,9 +81,9 @@ func pull(x *Xenia, data []Data) (int, error) {
 }
 
 // store knows how to store bulks of data into Pillar.
-func store(p *Pillar, data []Data) (int, error) {
+func store(s Storer, data []Data) (int, error) {
 	for i := range data {
-		if err := p.Store(&data[i]); err != nil {
+		if err := s.Store(&data[i]); err != nil {
 			return i, err
 		}
 	}
@@ -76,13 +92,13 @@ func store(p *Pillar, data []Data) (int, error) {
 }
 
 // Copy knows how to pull and store data from the System.
-func Copy(sys *System, batch int) error {
+func Copy(ps PullStorer, batch int) error {
 	data := make([]Data, batch)
 
 	for {
-		i, err := pull(&sys.Xenia, data)
+		i, err := pull(ps, data)
 		if i > 0 {
-			if _, err := store(&sys.Pillar, data[:i]); err != nil {
+			if _, err := store(ps, data[:i]); err != nil {
 				return err
 			}
 		}
