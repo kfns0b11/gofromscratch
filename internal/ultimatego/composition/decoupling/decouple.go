@@ -63,8 +63,8 @@ func (*Pillar) Store(d *Data) error {
 
 // System wraps Xenia and Pillar together into a single system.
 type System struct {
-	Xenia
-	Pillar
+	Puller
+	Storer
 }
 
 // =============================================================================
@@ -113,11 +113,11 @@ func Copy(ps PullStorer, batch int) error {
 
 func main() {
 	sys := System{
-		Xenia: Xenia{
+		Puller: &Xenia{
 			Host:    "localhost:8000",
 			Timeout: time.Second,
 		},
-		Pillar: Pillar{
+		Storer: &Pillar{
 			Host:    "localhost:9000",
 			Timeout: time.Second,
 		},
