@@ -16,6 +16,7 @@ func add(nums []int) int {
 func addConcurency(gnum int, nums []int) int {
 	var sum int64
 	stride := len(nums) / gnum
+	
 	var wg sync.WaitGroup
 	wg.Add(gnum)
 
